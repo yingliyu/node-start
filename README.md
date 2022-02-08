@@ -14,6 +14,7 @@
 
 - 1.[《Nodejs 基础——fs 模块》](./pages/start-fs.md)
 - 2.[《Nodejs 基础——path 模块》](./pages/path.md)
+- 3.[《Nodejs 基础——http 模块》](./pages/http.md)
 
 ## 最后
 
