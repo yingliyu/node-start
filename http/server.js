@@ -2,7 +2,7 @@
  * @Author: ylyu
  * @Date: 2022-02-08 14:45:46
  * @LastEditors: ylyu
- * @LastEditTime: 2022-02-08 15:17:37
+ * @LastEditTime: 2022-02-08 16:00:08
  * @Description:
  */
 const http = require('http')
@@ -11,20 +11,22 @@ const path = require('path')
 
 // 创建服务器
 http
-  .createServer(function (request, response) {
+  .createServer((request, response) => {
     // 解析请求，包括文件名
-    const basename = path.basename(request.url)
+    const { url } = request
 
+    const fpath = path.join(__dirname, url)
     // 输出请求的文件名
-    console.log('Request for ' + basename + ' received.')
+    console.log('Request for ' + url + ' received.')
 
     // 从文件系统中读取请求的文件内容
-    fs.readFile(path.join(__dirname, basename), (err, data) => {
+    fs.readFile(fpath, (err, data) => {
       if (err) {
         console.log(err)
         // HTTP 状态码: 404 : NOT FOUND
         // Content Type: text/html
-        return response.writeHead(404, { 'Content-Type': 'text/html' })
+        response.writeHead(404, { 'Content-Type': 'text/html' })
+        return response.end('404 Not Found!')
       }
       // HTTP 状态码: 200 : OK
       // Content Type: text/html

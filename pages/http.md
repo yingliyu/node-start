@@ -4,7 +4,7 @@
 
 ## 前言
 
-以前总是对全栈嗤之以鼻，觉得做前端就学好前端就可以了，毕竟术业有专攻，况且前端的内容也很多而且日新月异，但是今天我的想法被颠覆了，变得青睐于全栈。可能是一次次依赖于后端让我束手束脚，不能自由实施开发，那么就现在从学习 Nodejs 开始吧，再出发！💪
+以前总是对全栈嗤之以鼻，觉得做前端就学好前端就可以了，毕竟术业有专攻，况且前端的内容也很多而且日新月异，但是今天我的想法被颠覆了，变得青睐于全栈。可能是一次次依赖于后端过于束手束脚，不能自由把自己的想法变成现实/产品，那么就现在从学习 Nodejs 开始吧，再出发！💪
 
 Node.js 开发的目的就是为了用 JavaScript 编写 Web 服务器程序，HTTP 模块是 JS 编写 Web 服务器程序的核心模块。正是如此，相信大部分前端 er 已经掌握了 js 前端的开发，那么再学会如何将 js 应用在后端开发，那你就是名副其实的全栈了。
 
@@ -137,20 +137,23 @@ const path = require('path')
 
 // 创建服务器
 http
-  .createServer(function (request, response) {
+  .createServer((request, response) => {
     // 解析请求，包括文件名
-    var basename = path.basename(request.url)
+    const url = request.url
+    console.log('=====', url)
 
+    const fpath = path.join(__dirname, url)
     // 输出请求的文件名
-    console.log('Request for ' + basename + ' received.')
+    console.log('Request for ' + url + ' received.')
 
     // 从文件系统中读取请求的文件内容
-    fs.readFile(path.join(__dirname, basename), (err, data) => {
+    fs.readFile(fpath, (err, data) => {
       if (err) {
         console.log(err)
         // HTTP 状态码: 404 : NOT FOUND
         // Content Type: text/html
-        return response.writeHead(404, { 'Content-Type': 'text/html' })
+        response.writeHead(404, { 'Content-Type': 'text/html' })
+        return response.end('404 Not Found!')
       }
       // HTTP 状态码: 200 : OK
       // Content Type: text/html
