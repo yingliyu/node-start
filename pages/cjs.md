@@ -22,7 +22,7 @@
 
 ## 模块化规范
 
-Nodejs 遵循 CommonJS 模块化规范，即 CMJ（CommonJS Module）。由于 Nodejs 刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的 CommonJS 作为模块化规范，
+Nodejs 遵循 CommonJS 模块化规范，即 CJS（CommonJS Module）。由于 Nodejs 刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的 CommonJS 作为模块化规范，
 
 `CJS`使用`exports`导出模块，`require`导入模块。
 
@@ -41,7 +41,7 @@ CommonJS 规范是通过 module.exports 定义的，在前端浏览器中并不�
 
 Nodejs 和 Webpack 都是采用的 CommonJS 规范。
 
-**_Commonjs 模块化使用：_**
+**_CommonJS 模块化使用：_**
 
 ```js
 // 1.加载内置fs模块
@@ -158,8 +158,7 @@ exports.age = 18
 - [《Nodejs 基础——http 模块》](https://juejin.cn/post/7062239625699393567)
 - [《Nodejs 基础——stream 模块》](https://juejin.cn/post/7062541118121967647)
 
-**参考：**
-
+参考：
 [Nodejs 官方](http://nodejs.cn/learn/expose-functionality-from-a-nodejs-file-using-exports)、[Nodejs 模块系统教程](https://www.runoob.com/nodejs/nodejs-module-system.html)
 
 > 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，有更好的实现或想法希望留下你的评论 🔥
