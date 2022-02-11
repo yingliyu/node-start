@@ -22,7 +22,7 @@
 
 ## 模块化规范
 
-Nodejs 遵循 CommonJS 模块化规范，即 CJS（CommonJS Module）。由于 Nodejs 刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的 CommonJS 作为模块化规范，
+Nodejs 遵循 CommonJS （即 CJS）模块化规范。由于 Nodejs 刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的 CommonJS 作为模块化规范，
 
 `CJS`使用`exports`导出模块，`require`导入模块。
 
@@ -153,10 +153,12 @@ exports.age = 18
 
 🌈Nodejs 基础系列，欢迎你来 🍭 多多交流，技术始于需求源于分享~
 
-- [《Nodejs 基础——fs 模块》](https://juejin.cn/post/7058459564626149389)
+- [《Nodejs 基础学习开端篇》](https://juejin.cn/post/7058459564626149389)
+- [《Nodejs 基础——fs 模块》](https://juejin.cn/post/7063382395344388110/)
 - [《Nodejs 基础——path 模块》](https://juejin.cn/post/7059311448891228167/)
 - [《Nodejs 基础——http 模块》](https://juejin.cn/post/7062239625699393567)
 - [《Nodejs 基础——stream 模块》](https://juejin.cn/post/7062541118121967647)
+- [《Nodejs 基础——模块化》](https://juejin.cn/post/7063000384758874126)
 
 参考：
 [Nodejs 官方](http://nodejs.cn/learn/expose-functionality-from-a-nodejs-file-using-exports)、[Nodejs 模块系统教程](https://www.runoob.com/nodejs/nodejs-module-system.html)

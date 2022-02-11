@@ -14,11 +14,18 @@
 
 ## 文章列表
 
-1. [《Nodejs 基础——fs 模块》](./pages/start-fs.md)
+<!-- 1. [《Nodejs 基础——fs 模块》](./pages/start-fs.md)
 2. [《Nodejs 基础——path 模块》](./pages/path.md)
 3. [《Nodejs 基础——http 模块》](./pages/http.md)
 4. [《Nodejs 基础——stream 模块》](./pages/stream.md)
-5. [《Nodejs 基础——模块化》](./pages/cjs.md)
+5. [《Nodejs 基础——模块化》](./pages/cjs.md) -->
+
+- [《Nodejs 基础学习开端篇》](https://juejin.cn/post/7058459564626149389)
+- [《Nodejs 基础——fs 模块》](https://juejin.cn/post/7063382395344388110/)
+- [《Nodejs 基础——path 模块》](https://juejin.cn/post/7059311448891228167/)
+- [《Nodejs 基础——http 模块》](https://juejin.cn/post/7062239625699393567)
+- [《Nodejs 基础——stream 模块》](https://juejin.cn/post/7062541118121967647)
+- [《Nodejs 基础——模块化》](https://juejin.cn/post/7063000384758874126)
 
 ## 最后
 
