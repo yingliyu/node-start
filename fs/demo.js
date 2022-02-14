@@ -2,7 +2,7 @@
  * @Author: ylyu
  * @Date: 2022-02-11 11:12:39
  * @LastEditors: ylyu
- * @LastEditTime: 2022-02-11 17:53:37
+ * @LastEditTime: 2022-02-14 10:37:15
  * @Description:
  */
 // 1、fs.stat()
@@ -107,17 +107,21 @@ function main() {
       return
     }
     console.log('所有的文件/目录:', data)
-
-    let result = data.filter(async (item) => {
-      console.log(item)
+    /**
+     * 当在filter 回调中使用await时，回调总是一个promise。由于promise 总是真的，数组中的所有项都通过filter 。
+     * 在filter使用 await 正确的三个步骤
+     * 使用map返回一个promise 数组
+     * 使用 await 等待处理结果
+     * 使用 filter 对返回的结果进行处理
+     */
+    let promise = data.map(async (item) => {
       let temp = await isDir(item)
-      console.log('temp ===', temp)
-      return temp ? 1 : 0
+      return temp ? item : null
     })
+    const result = await Promise.all(promise)
+    let res = result.filter((item) => !!item)
 
-    // let result = data.filter((item) => !item.includes('.'))
-
-    console.log('最终的得到的数组：', result)
+    console.log('最终的得到的数组：', res)
   })
 }
 
