@@ -2,7 +2,7 @@
  * @Author: ylyu
  * @Date: 2022-02-14 16:02:30
  * @LastEditors: ylyu
- * @LastEditTime: 2022-02-14 17:47:28
+ * @LastEditTime: 2022-02-15 15:45:07
  * @Description: 封装类似express路由
  */
 const fs = require('fs')
@@ -19,7 +19,7 @@ const changeRes = (res) => {
 
 // 根据后缀名获取文件类型
 const getFileMime = (extname) => {
-  let data = fs.readFileSync('../data/mime.json')
+  let data = fs.readFileSync(path.join(__dirname, '../data/mime.json'))
   let mimeObj = JSON.parse(data.toString())
   return mimeObj[extname]
 }
@@ -33,17 +33,25 @@ const initStatic = (req, res, staticPath) => {
   // let pathname = new URL('http://localhost:8080' + req.url).pathname
   // console.log(pathname)
 
-  pathname = pathname === '/' ? '/index.html' : pathname
+  // pathname = pathname === '/' ? '/index.html' : pathname
   // 2、获取后缀名
   let extname = path.extname(pathname)
-  // 3、通过fs模块读取文件
-  try {
-    const data = fs.readFileSync('../' + staticPath + pathname)
-    // let mine = await getFileMime(extname) // 异步
-    let mine = getFileMime(extname) // 同步
-    res.writeHead(200, { 'Content-Type': `${mine};charset="utf-8"` })
-    res.end(data)
-  } catch (error) {}
+  if (extname) {
+    // 3、通过fs模块读取文件
+    try {
+      let data = fs.readFileSync(
+        path.join(__dirname, '../' + staticPath + pathname)
+      )
+      if (data) {
+        // let mine = await getFileMime(extname) // 异步
+        let mine = getFileMime(extname) // 同步
+        res.writeHead(200, { 'Content-Type': `${mine};charset="utf-8"` })
+        res.end(data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 let server = () => {
@@ -62,23 +70,27 @@ let server = () => {
     let pathname = url.parse(req.url).pathname
     // 获取请求类型
     let method = req.method.toLowerCase()
-    if (G['_' + method][pathname]) {
-      if (method === 'get') {
-        G._get[pathname](req, res)
+
+    let extname = path.extname(pathname)
+    if (!extname) {
+      if (G['_' + method][pathname]) {
+        if (method === 'get') {
+          G['_' + method][pathname](req, res)
+        } else {
+          // 获取post的数据，绑定到req.body
+          let postData = ''
+          req.on('data', (chunk) => {
+            postData += chunk
+          })
+          req.on('end', () => {
+            req.body = postData
+            G['_' + method][pathname](req, res) // 执行方法
+          })
+        }
       } else {
-        // 获取post的数据，绑定到req.body
-        let postData = ''
-        req.on('data', (chunk) => {
-          postData += chunk
-        })
-        req.on('end', () => {
-          req.body = postData
-          G['_' + method][pathname](req, res) // 执行方法
-        })
+        res.writeHead(404, { 'Content-Type': 'text/html;charset="utf-8"' })
+        res.end('页面不存在')
       }
-    } else {
-      res.writeHead(404, { 'Content-Type': 'text/html;charset="utf-8"' })
-      res.end('Page Not Found')
     }
   }
   // 配置get请求
