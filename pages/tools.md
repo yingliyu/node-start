@@ -153,3 +153,5 @@ npm install --save-dev nodemon // 非全局安装 or using yarn: yarn add nodemo
 -[Nodejs REPL](http://nodejs.cn/learn/how-to-use-the-nodejs-repl)
 
 -[Nodejs 教程](https://www.runoob.com/nodejs/nodejs-repl.html)
+
+> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，有更好的实现或想法希望留下你的评论 🔥
