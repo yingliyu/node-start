@@ -26,7 +26,8 @@
 - [《Nodejs 基础——http 模块》](https://juejin.cn/post/7062239625699393567)
 - [《Nodejs 基础——stream 模块》](https://juejin.cn/post/7062541118121967647)
 - [《Nodejs 基础——模块化》](https://juejin.cn/post/7063000384758874126)
-- [《学 Nodejs 必备工具》](./pages/tools.md)
+- [《学 Nodejs 必备工具》](https://juejin.cn/post/7065133918185324552)
+- [《浅谈 JS 事件循环机制》](https://juejin.cn/post/7065569527454498824)
 
 ## 最后
 
