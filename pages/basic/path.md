@@ -90,3 +90,5 @@ console.log(path.dirname(filePath)) // a/b/c
 ### 最后
 
 参考：[nodejs 教程](http://nodejs.cn/learn/the-nodejs-path-module/#pathbasename)
+
+> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，如果有更好的实现或想法希望留下你的评论 🔥

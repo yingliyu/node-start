@@ -1,4 +1,4 @@
-# Express 基础
+# Express 路由
 
 > Express 是基于 Nodejs 平台，快速、开放、极简的 Web 开发框架。
 
@@ -12,21 +12,38 @@ npm i express --save
 
 这里使用的是express@4.17.1
 
-## 创建一个简单的 web 服务器
+## Express 路由
 
-```JS
-// 导入express
-const express = require('express')
+在 Express 中，路由指的是客户端的请求与服务器处理函数之间的映射关系。
 
-// 创建web服务器
-const app = express()
+Express 中的路由分为 3 部分组成，分别是请求的类型、请求的 URL 地址、处理函数，格式如下：
 
-// 调用app.listen启动服务器
-app.listen(8080, () => {
-  console.log('Express server running at http://localhost:8080')
+```js
+app.METHOD(path, callback [, callback ...])
+```
+
+参数说明：
+
+- path - 请求的 url 地址
+- callback - 请求的回调
+
+_Demo:_
+
+```js
+// 挂载路由，匹配GET请求，请求url为 /
+app.get('/', (req, res) => {
+  res.send('Hello World!')
 })
 
+// 挂载路由，匹配POST请求，请求url为 /user
+app.post('/user', (req, res) => {
+  res.send('Send a POST Request.')
+})
 ```
+
+那么路由是怎么匹配的呢？我们来了解一下它的匹配过程。
+
+每当一个请求到达服务器之后，需要先经过路由的匹配，只有匹配成功，才会调用对应的回调函数。在匹配时，会按照路由的`先后顺序`进行匹配，如果`请求类型`和`请求 URL 地址`同时匹配成功，则 Express 会将这次请求转交给对应的 callback 函数处理并响应此次请求。
 
 ## 监听 GET 请求
 
@@ -114,39 +131,6 @@ app.use('/static', express.static('./public'))
 
 然后，可以通过 http://localhost:8080/`static`/`[filename]` 访问 public 目录下的所有文件。
 
-## Express 路由
-
-在 Express 中，路由指的是客户端的请求与服务器处理函数之间的映射关系。
-
-Express 中的路由分为 3 部分组成，分别是请求的类型、请求的 URL 地址、处理函数，格式如下：
-
-```js
-app.METHOD(path, callback [, callback ...])
-```
-
-参数说明：
-
-- path - 请求的 url 地址
-- callback - 请求的回调
-
-_Demo:_
-
-```js
-// 挂载路由，匹配GET请求，请求url为 /
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-// 挂载路由，匹配POST请求，请求url为 /user
-app.post('/user', (req, res) => {
-  res.send('Send a POST Request.')
-})
-```
-
-那么路由是怎么匹配的呢？我们来了解一下它的匹配过程。
-
-每当一个请求到达服务器之后，需要先经过路由的匹配，只有匹配成功，才会调用对应的回调函数。在匹配时，会按照路由的`先后顺序`进行匹配，如果`请求类型`和`请求 URL 地址`同时匹配成功，则 Express 会将这次请求转交给对应的 callback 函数处理并响应此次请求。
-
 ## 模块化路由
 
 实际项目中业务模块比较多的时候，路由文件就会很庞大，不利于维护。那么为了更好的解决这个问题，可以使用模块化路由，方便对路由进行模块化管理，Express 不建议直接将路由挂载到 app 上，而是推荐将路由抽离为单独的模块。
@@ -175,57 +159,10 @@ const useRouter = require('.router/user.js')
 app.use('/api', useRouter)
 ```
 
-然后，可以通过 http://localhost:8080/`static`/`[filename]` 访问 public 目录下的所有文件。
+然后，可以通过 http://localhost:8080/`static`/`[filename]` 访问。
 
-## Express 中间件
+## 最后
 
-业务处理过程中的中间环节，中间件必须有输入和输出，上一级的输出作为下一级的输入。
+参考：[Express](https://www.expressjs.com.cn/)
 
-### 中间件的调用流程
-
-当一个请求到达 Express 服务器之后，可以练习调用多个中间件，从而对此次请求进行预处理。
-![中间件的调用流程](imgs/中间件.png)
-
-### 中间件的格式
-
-Express 中间件，本质上就是一个 function 处理函数。
-
-Express 中间件的格式如下：
-
-![中间件格式](imgs/中间件格式.png)
-
-> 中间件函数的形参列表中，必须包含 `next()`函数，而路由处理函数的形参列表中只有 `req` 和 `res`。
-
-### next()函数的作用
-
-`next()`函数，时实现`多个中间件`连续调用的关键，它表示把流转关系转交给下一个`中间件`或`路由`。
-
-## 定义全局中间件
-
-全局生效的中间件。客户端发起的任何请求，到达服务器之后，都会触发的中间件，叫做全局生效的中间件。
-通过调用`app.use(中间件函数)`,即可定义一个全局生效的中间件。
-
-```js
-// 自定义中间件
-const custonMW = (req, res, next) => {
-  console.log('这是一个简单的自定义中间件函数')
-  // 把流转关系转交给下一个中间件或路由
-  next()
-}
-
-// 将custonMW中间件注册为全局生效的中间件
-app.use(custonMW)
-```
-
-上面代码等效于：
-
-```js
-app.use((req, res, next) => {
-  console.log('这是一个简单的自定义中间件函数')
-  next()
-})
-```
-
-### 中间件的作用
-
-多个中间件之间共享一份 req、res，基于这样的特性，我们可以在上游的中间件中，统一为 req 和 res 对象添加自定义属性或方法，供下游的中间件或路由使用。
+> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，如果有更好的实现或想法希望留下你的评论 🔥

@@ -163,4 +163,4 @@ exports.age = 18
 参考：
 [Nodejs 官方](http://nodejs.cn/learn/expose-functionality-from-a-nodejs-file-using-exports)、[Nodejs 模块系统教程](https://www.runoob.com/nodejs/nodejs-module-system.html)
 
-> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，有更好的实现或想法希望留下你的评论 🔥
+> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，如果有更好的实现或想法希望留下你的评论 🔥

@@ -240,4 +240,4 @@ req.end()
 
 更多 API 参考：[Nodejs 官方](http://nodejs.cn/learn/the-nodejs-http-module)、[Nodejs 教程](https://www.runoob.com/nodejs/nodejs-web-module.html)
 
-> 文章有误解的地方，欢迎指出，将在第一时间改正，有更好的实现方式希望留下你的评论
+> 如果有错别字或者不对的地方欢迎指出，将在第一时间改正，如果有更好的实现或想法希望留下你的评论 🔥
