@@ -19,11 +19,11 @@
 
 ## 文章列表
 
-<!-- 1. [《Nodejs 基础——fs 模块》](./pages/start-fs.md)
-2. [《Nodejs 基础——path 模块》](./pages/path.md)
-3. [《Nodejs 基础——http 模块》](./pages/http.md)
-4. [《Nodejs 基础——stream 模块》](./pages/stream.md)
-5. [《Nodejs 基础——模块化》](./pages/cjs.md) -->
+<!-- 1. [《Nodejs 基础——fs 模块》](./docs/start-fs.md)
+2. [《Nodejs 基础——path 模块》](./docs/path.md)
+3. [《Nodejs 基础——http 模块》](./docs/http.md)
+4. [《Nodejs 基础——stream 模块》](./docs/stream.md)
+5. [《Nodejs 基础——模块化》](./docs/cjs.md) -->
 
 - [《Nodejs 基础学习开端篇》](https://juejin.cn/post/7058459564626149389)
 - [《Nodejs 基础——fs 模块》](https://juejin.cn/post/7063382395344388110/)
@@ -33,6 +33,7 @@
 - [《Nodejs 基础——模块化》](https://juejin.cn/post/7063000384758874126)
 - [《学 Nodejs 必备工具》](https://juejin.cn/post/7065133918185324552)
 - [《浅谈 JS 事件循环机制》](https://juejin.cn/post/7065569527454498824)
+- [《Express——路由》](https://juejin.cn/post/7066356335457075207)
 
 ## 最后
 
