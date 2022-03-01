@@ -49,9 +49,11 @@ use 数据库名
 4. 向当前数据库中某集合插入数据：
 
 ```js
-db.集合名.insert(数据)
+db.collectionName.insert(数据)
 // db.user.insert({name:"Tom",age:18}) // 向mydb数据库插入user集合，并向该插入插入一条数据
 ```
+
+说明：collectionName - 集合名
 
 - 批量插入
 
@@ -200,15 +202,40 @@ db.user.find().limit(10).skip(10)
 db.user.update({ name: 'zs0' }, { $set: { age: 16 } })
 ```
 
-### 删除操作
-
-11. 删除当前数据库的集合：
+- 批量修改在 update()方法第三个参数加{multi: true}
 
 ```js
-db.集合名.drop()
+// 在当前数据库中user集合下name含有zs的数据批量修改性别sex为男
+db.user.update({ name: /zs/ }, { $set: { sex: '男' } }, { multi: true })
 ```
 
-12. 删除当前数据库：
+### 删除操作
+
+1.删除数据
+
+```js
+db.collectionName.remove(filter, option)
+```
+
+说明：
+
+- collectionName- <string> 集合名
+- filter- <object> 条件，条件为{}时，删除所有数据。
+- option- <object> 其他条件，{ justOne: true }时只删除一条数据，否则删除符合条件的所有数据。
+  例如：
+
+```js
+db.user.remove({ name: 'zs0' })
+db.user.remove({ age: { $gt: 30 } }, { justOne: true })
+```
+
+2. 删除当前数据库的集合：
+
+```js
+db.collectionName.drop()
+```
+
+3. 删除当前数据库：
 
 ```js
 db.dropDatabase()
