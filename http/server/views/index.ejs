@@ -1,0 +1,25 @@
+<!--
+ * @Author: ylyu
+ * @Date: 2022-02-14 16:24:57
+ * @LastEditors: ylyu
+ * @LastEditTime: 2022-03-02 09:47:30
+ * @Description: ejs模板文件
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <h2>首页</h2>
+    <ul>
+      <%for(let i=0;i<list.length;i++){%>
+      <li><%=list[i].name%>---<%=list[i].age%></li>
+      <%}%>
+    </ul>
+  </body>
+</html>

@@ -2,7 +2,7 @@
  * @Author: ylyu
  * @Date: 2022-03-01 17:10:40
  * @LastEditors: ylyu
- * @LastEditTime: 2022-03-01 17:46:42
+ * @LastEditTime: 2022-03-02 11:03:42
  * @Description:
  */
 const { MongoClient } = require('mongodb')
@@ -18,7 +18,7 @@ const dbName = 'mydb'
 const client = new MongoClient(url)
 
 // Use connect method to connect to the Server
-client.connect(function (err) {
+client.connect((err) => {
   if (err) {
     return console.log(err)
   }
