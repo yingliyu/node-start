@@ -2,19 +2,20 @@
  * @Author: ylyu
  * @Date: 2022-03-02 16:07:15
  * @LastEditors: ylyu
- * @LastEditTime: 2022-03-02 17:45:54
+ * @LastEditTime: 2022-03-02 17:54:03
  * @Description: mongoose 聚合管道 aggregate
  */
 const mongoose = require('mongoose')
 mongoose.connect(
   'mongodb://admin:admin@localhost:27017/library_db?authSource=admin'
 )
+const Schema = mongoose.Schema
+
 // 文章 article collection
 const ArticleSchema = mongoose.Schema({
   id: String,
-  // cid: { type: Schema.Types.ObjectId }, //分类id
-  cid: { type: String }, //分类id
-  author_id: String, //作者id
+  cid: { type: Schema.Types.ObjectId }, //分类id
+  author_id: { type: Schema.Types.ObjectId }, //作者id
   title: String,
   author_name: String,
   summary: String,
@@ -24,7 +25,7 @@ const ArticleSchema = mongoose.Schema({
 
 // 文章分类 articlecate collection
 const ArticleCateSchema = mongoose.Schema({
-  id: String,
+  id: { type: Schema.Types.ObjectId },
   title: String,
   description: String,
   create_time: Date,
@@ -32,7 +33,7 @@ const ArticleCateSchema = mongoose.Schema({
 
 // 用户 users collection
 const UsersSchema = mongoose.Schema({
-  id: String,
+  id: { type: Schema.Types.ObjectId },
   name: String,
   username: String,
   password: String,
