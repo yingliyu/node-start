@@ -1,4 +1,24 @@
 {
+  "name": "node-start",
+  "description": "🚀 欢迎`Star`与分享，后续会不断更新。[gitee 版本阅读更流畅，点击阅读](https://gitee.com/ylyubook/node-start)",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yingliyu/node-start.git"
+  },
+  "author": "ylyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yingliyu/node-start/issues"
+  },
+  "homepage": "https://github.com/yingliyu/node-start#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
     "cheerio": "^1.0.0-rc.10",
@@ -7,6 +27,8 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
     "md5": "^2.3.0",
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.4",
